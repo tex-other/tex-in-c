@@ -1,0 +1,12 @@
+It is natural to convert TeX from array indices to pointer. However, 
+on 64-bit machines it means doubling the memory consumption (and 
+on x86 slight slowdown). So, is elegance worth the cost?
+
+TeX sting pool packs strings closely together. C prefers null 
+termineted strings. Moreover, mantaininig string pool requiers 
+external program. Should we convert TeX pool to null terminated 
+strings or abandon it completely?
+
+TeX boxes and friends have pretty similar layouts and uniform
+set of operations. It looks very much like objects. Should we 
+make object structure more explicit?
