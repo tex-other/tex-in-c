@@ -1,0 +1,5 @@
+#!/bin/sh
+#grep '@d [0-9A-Za-z_]\+ \?=[^=]' tex.web | \
+#  sed 's/{.*/;/;s,.*@d,  ,' > consts.def
+# sed '/@d [0-9A-Za-z_]\+ \?=[^=]/{/{/!d;s,[^{]*{,{,;}' tex.web > tex1.web
+sed ':ppp;/@d/{s,@d.*,,;:dalej;n;/^[^@]/{s,.*,,;b dalej;};/^@[:.]/{s,.*,,;b dalej;};b ppp}' tex.web 

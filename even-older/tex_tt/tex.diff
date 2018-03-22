@@ -1,0 +1,46 @@
+--- tex2.c	Fri Jul 28 02:24:52 2000
++++ tex1.cc	Fri Jul 28 02:24:37 2000
+@@ -873,42 +873,8 @@
+ 
+ /*13:*/
+ Static long bad;   /*Pseudozmienne*/
+-Static long mode, head, tail, prevgraf, aux, prevdepth, spacefactor, clang,
+-	    incompleatnoad, modeline, topmark, firstmark, botmark,
+-	    splitfirstmark, splitbotmark, nonchar, stopflag, kernflag,
+-	    defaultrulethickness, bigopspacing1, bigopspacing2, bigopspacing3,
+-	    bigopspacing4, bigopspacing5;
+-Static scaled activeheight[6];
+-Static triepointer trieroot;
+-Static scaled actwidth, curheight, pagegoal, pagetotal, pageshrink, pagedepth,
++Static scaled
+ 	      texremainder, maxv, maxh, ruleht, ruledp, rulewd;
+-Static FILE *curfile;
+-Static quarterword state, iindex, tokentype;
+-Static pointer contribtail;
+-Static halfword start, loc, limit, name, paramstart, parshapeptr,
+-		outputroutine, everypar, everymath, everydisplay, everyhbox,
+-		everyvbox, everyjob, everycr, errhelp, curfont;
+-Static long lineskip, baselineskip, parskip, abovedisplayskip,
+-	    belowdisplayskip, abovedisplayshortskip, belowdisplayshortskip,
+-	    leftskip, rightskip, topskip, splittopskip, tabskip, spaceskip,
+-	    xspaceskip, parfillskip, thinmuskip, medmuskip, thickmuskip,
+-	    pretolerance, tolerance, linepenalty, hyphenpenalty,
+-	    exhyphenpenalty, clubpenalty, widowpenalty, displaywidowpenalty,
+-	    brokenpenalty, binoppenalty, relpenalty, predisplaypenalty,
+-	    postdisplaypenalty, interlinepenalty, doublehyphendemerits,
+-	    finalhyphendemerits, adjdemerits, mag, delimiterfactor, looseness,
+-	    time, day, month, year, showboxbreadth, showboxdepth, hbadness,
+-	    vbadness, pausing, tracingonline, tracingmacros, tracingstats,
+-	    tracingparagraphs, tracingpages, tracingoutput, tracinglostchars,
+-	    tracingcommands, tracingrestores, uchyph, outputpenalty,
+-	    maxdeadcycles, hangafter, floatingpenalty, globaldefs, curfam,
+-	    escapechar, defaulthyphenchar, defaultskewchar, endlinechar,
+-	    newlinechar, language, lefthyphenmin, righthyphenmin,
+-	    holdinginserts, errorcontextlines, parindent, mathsurround,
+-	    lineskiplimit, hsize, vsize, maxdepth, splitmaxdepth, boxmaxdepth,
+-	    hfuzz, vfuzz, delimitershortfall, nulldelimiterspace, scriptspace,
+-	    predisplaysize, displaywidth, displayindent, overfullrule,
+-	    hangindent, hoffset, voffset, emergencystretch;
+ /*Koniec pseudozmiennych*/
+ Static memoryword pppfmtfile;
+ /*:13*/
