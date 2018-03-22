@@ -1,0 +1,38 @@
+<html> <head>TeX in C </head>
+<body>
+This is <em>alpha</em> version of TeX converted to C. 
+Archive with <a href="texinc-0.2.tar.gz"> current version </a>.
+</p>
+
+The source is intended to be pure ANSI C, so you should be 
+able to edit makefile and just remake. For developement 
+`perl' is needed. If you do not have perl you may still re-bulid 
+using provided C files.</p>
+
+Dvi files we get are different then dvi files from other 
+TeX variants, mostly due to timestamp and size of output buffer. 
+I wrote a little utility (<a href="dvinorm.c"> dvinorm.c <a/>) 
+which should remove most inessential differences. There 
+are still diferences due to glue ratio rounding.</p> 
+
+Some <a href="Goals.txt"> ramblings </a> about this project.
+The bulk of conversion is done mechanically using 'p2c'  
+(<a href="Convertion.txt"> more on conversion </a>). 
+Currently, however the C version is my master source.</p>
+
+Currently path searching is very simple-mided: file are looked up in 
+all directories in corresponding path. There are hardcoded
+defaults (good for me to run trip test), but you probably 
+shuld set real paths using environment variables (TEXINPUTS,  
+TEXFONTS and TEXFORMATS for tex, tfm and format files respectively). 
+Path searching has Unix slash hardcoded --- if neccesary change 
+in source.</p>
+
+Some <a href="ISSUES"> issues </a>. </p>
+
+<a href="old.html"> Older stuff </a>.
+
+
+</body>
+</html>
+
