@@ -1,0 +1,10 @@
+tex.o: tex.c tex.h str.h texmac.h macros.h funcs.h global.h printout.h \
+ fonts.h texfunc.h dviout.h
+funcs.o: funcs.c tex.h str.h funcs.h global.h
+inipool.o: inipool.c tex.h str.h funcs.h global.h pool_str.c
+inputln.o: inputln.c tex.h str.h funcs.h global.h
+printout.o: printout.c tex.h macros.h str.h printout.h fonts.h texfunc.h
+str.o: str.c tex.h macros.h str.h funcs.h fonts.h texfunc.h
+fonts.o: fonts.c tex.h macros.h str.h printout.h funcs.h fonts.h \
+ texfunc.h
+dviout.o: dviout.c tex.h str.h fonts.h dviout.h funcs.h

@@ -1,0 +1,1437 @@
+#include "tex.h"
+#include "macros.h"
+#include "str.h"
+#include "printout.h"
+#include "fonts.h"
+#include "texfunc.h"
+
+/*247:*/
+void printlengthparam(long n)
+{
+  switch (n) {
+
+  case parindentcode:
+    printesc(S("parindent"));
+    break;
+
+  case mathsurroundcode:
+    printesc(S("mathsurround"));
+    break;
+
+  case lineskiplimitcode:
+    printesc(S("lineskiplimit"));
+    break;
+
+  case hsizecode:
+    printesc(S("hsize"));
+    break;
+
+  case vsizecode:
+    printesc(S("vsize"));
+    break;
+
+  case maxdepthcode:
+    printesc(S("maxdepth"));
+    break;
+
+  case splitmaxdepthcode:
+    printesc(S("splitmaxdepth"));
+    break;
+
+  case boxmaxdepthcode:
+    printesc(S("boxmaxdepth"));
+    break;
+
+  case hfuzzcode:
+    printesc(S("hfuzz"));
+    break;
+
+  case vfuzzcode:
+    printesc(S("vfuzz"));
+    break;
+
+  case delimitershortfallcode:
+    printesc(S("delimitershortfall"));
+    break;
+
+  case nulldelimiterspacecode:
+    printesc(S("nulldelimiterspace"));
+    break;
+
+  case scriptspacecode:
+    printesc(S("scriptspace"));
+    break;
+
+  case predisplaysizecode:
+    printesc(S("predisplaysize"));
+    break;
+
+  case displaywidthcode:
+    printesc(S("displaywidth"));
+    break;
+
+  case displayindentcode:
+    printesc(S("displayindent"));
+    break;
+
+  case overfullrulecode:
+    printesc(S("overfullrule"));
+    break;
+
+  case hangindentcode:
+    printesc(S("hangindent"));
+    break;
+
+  case hoffsetcode:
+    printesc(S("hoffset"));
+    break;
+
+  case voffsetcode:
+    printesc(S("voffset"));
+    break;
+
+  case emergencystretchcode:
+    printesc(S("emergencystretch"));
+    break;
+
+  default:
+    print(S("[unknown dimen parameter!]"));
+    break;
+  }
+}
+/*:247*/
+
+/*237:*/
+void printparam(long n)
+{
+  switch (n) {
+
+  case pretolerancecode:
+    printesc(S("pretolerance"));
+    break;
+
+  case tolerancecode:
+    printesc(S("tolerance"));
+    break;
+
+  case linepenaltycode:
+    printesc(S("linepenalty"));
+    break;
+
+  case hyphenpenaltycode:
+    printesc(S("hyphenpenalty"));
+    break;
+
+  case exhyphenpenaltycode:
+    printesc(S("exhyphenpenalty"));
+    break;
+
+  case clubpenaltycode:
+    printesc(S("clubpenalty"));
+    break;
+
+  case widowpenaltycode:
+    printesc(S("widowpenalty"));
+    break;
+
+  case displaywidowpenaltycode:
+    printesc(S("displaywidowpenalty"));
+    break;
+
+  case brokenpenaltycode:
+    printesc(S("brokenpenalty"));
+    break;
+
+  case binoppenaltycode:
+    printesc(S("binoppenalty"));
+    break;
+
+  case relpenaltycode:
+    printesc(S("relpenalty"));
+    break;
+
+  case predisplaypenaltycode:
+    printesc(S("predisplaypenalty"));
+    break;
+
+  case postdisplaypenaltycode:
+    printesc(S("postdisplaypenalty"));
+    break;
+
+  case interlinepenaltycode:
+    printesc(S("interlinepenalty"));
+    break;
+
+  case doublehyphendemeritscode:
+    printesc(S("doublehyphendemerits"));
+    break;
+
+  case finalhyphendemeritscode:
+    printesc(S("finalhyphendemerits"));
+    break;
+
+  case adjdemeritscode:
+    printesc(S("adjdemerits"));
+    break;
+
+  case magcode:
+    printesc(S("mag"));
+    break;
+
+  case delimiterfactorcode:
+    printesc(S("delimiterfactor"));
+    break;
+
+  case loosenesscode:
+    printesc(S("looseness"));
+    break;
+
+  case timecode:
+    printesc(S("time"));
+    break;
+
+  case daycode:
+    printesc(S("day"));
+    break;
+
+  case monthcode:
+    printesc(S("month"));
+    break;
+
+  case yearcode:
+    printesc(S("year"));
+    break;
+
+  case showboxbreadthcode:
+    printesc(S("showboxbreadth"));
+    break;
+
+  case showboxdepthcode:
+    printesc(S("showboxdepth"));
+    break;
+
+  case hbadnesscode:
+    printesc(S("hbadness"));
+    break;
+
+  case vbadnesscode:
+    printesc(S("vbadness"));
+    break;
+
+  case pausingcode:
+    printesc(S("pausing"));
+    break;
+
+  case tracingonlinecode:
+    printesc(S("tracingonline"));
+    break;
+
+  case tracingmacroscode:
+    printesc(S("tracingmacros"));
+    break;
+
+  case tracingstatscode:
+    printesc(S("tracingstats"));
+    break;
+
+  case tracingparagraphscode:
+    printesc(S("tracingparagraphs"));
+    break;
+
+  case tracingpagescode:
+    printesc(S("tracingpages"));
+    break;
+
+  case tracingoutputcode:
+    printesc(S("tracingoutput"));
+    break;
+
+  case tracinglostcharscode:
+    printesc(S("tracinglostchars"));
+    break;
+
+  case tracingcommandscode:
+    printesc(S("tracingcommands"));
+    break;
+
+  case tracingrestorescode:
+    printesc(S("tracingrestores"));
+    break;
+
+  case uchyphcode:
+    printesc(S("uchyph"));
+    break;
+
+  case outputpenaltycode:
+    printesc(S("outputpenalty"));
+    break;
+
+  case maxdeadcyclescode:
+    printesc(S("maxdeadcycles"));
+    break;
+
+  case hangaftercode:
+    printesc(S("hangafter"));
+    break;
+
+  case floatingpenaltycode:
+    printesc(S("floatingpenalty"));
+    break;
+
+  case globaldefscode:
+    printesc(S("globaldefs"));
+    break;
+
+  case curfamcode:
+    printesc(S("fam"));
+    break;
+
+  case escapecharcode:
+    printesc(S("escapechar"));
+    break;
+
+  case defaulthyphencharcode:
+    printesc(S("defaulthyphenchar"));
+    break;
+
+  case defaultskewcharcode:
+    printesc(S("defaultskewchar"));
+    break;
+
+  case endlinecharcode:
+    printesc(S("endlinechar"));
+    break;
+
+  case newlinecharcode:
+    printesc(S("newlinechar"));
+    break;
+
+  case languagecode:
+    printesc(S("language"));
+    break;
+
+  case lefthyphenmincode:
+    printesc(S("lefthyphenmin"));
+    break;
+
+  case righthyphenmincode:
+    printesc(S("righthyphenmin"));
+    break;
+
+  case holdinginsertscode:
+    printesc(S("holdinginserts"));
+    break;
+
+  case errorcontextlinescode:
+    printesc(S("errorcontextlines"));
+    break;
+
+  default:
+    print(S("[unknown integer parameter!]"));
+    break;
+  }
+}
+
+
+void printcmdchr(quarterword cmd, halfword chrcode)
+{
+  switch (cmd) {
+
+  case leftbrace:
+    chrcmd(S("begin-group character "));
+    break;
+
+  case rightbrace:
+    chrcmd(S("end-group character "));
+    break;
+
+  case mathshift:
+    chrcmd(S("math shift character "));
+    break;
+
+  case macparam:
+    chrcmd(S("macro parameter character "));
+    break;
+
+  case supmark:
+    chrcmd(S("superscript character "));
+    break;
+
+  case submark:
+    chrcmd(S("subscript character "));
+    break;
+
+  case endv:
+    print(S("end of alignment template"));
+    break;
+
+  case spacer:
+    chrcmd(S("blank space "));
+    break;
+
+  case letter:
+    chrcmd(S("the letter "));
+    break;
+
+  case otherchar:
+    chrcmd(S("the character "));
+    break;
+
+  /*227:*/
+  case assignglue:
+  case assignmuglue:   /*:227*/
+    if (chrcode < skipbase)
+      printskipparam(chrcode - gluebase);
+    else if (chrcode < muskipbase) {
+      printesc(S("skip"));
+      printint(chrcode - skipbase);
+    } else {
+      printesc(S("muskip"));
+      printint(chrcode - muskipbase);
+    }
+    break;
+    /*231:*/
+
+  case assigntoks:   /*:231*/
+    if (chrcode >= toksbase) {
+      printesc(S("toks"));
+      printint(chrcode - toksbase);
+    } else {
+      switch (chrcode) {
+
+      case outputroutineloc:
+	printesc(S("output"));
+	break;
+
+      case everyparloc:
+	printesc(S("everypar"));
+	break;
+
+      case everymathloc:
+	printesc(S("everymath"));
+	break;
+
+      case everydisplayloc:
+	printesc(S("everydisplay"));
+	break;
+
+      case everyhboxloc:
+	printesc(S("everyhbox"));
+	break;
+
+      case everyvboxloc:
+	printesc(S("everyvbox"));
+	break;
+
+      case everyjobloc:
+	printesc(S("everyjob"));
+	break;
+
+      case everycrloc:
+	printesc(S("everycr"));
+	break;
+
+      default:
+	printesc(S("errhelp"));
+	break;
+      }
+    }
+    break;
+    /*239:*/
+
+  case assignint:
+    if (chrcode < countbase)
+      printparam(chrcode - intbase);
+    else {
+      printesc(S("count"));
+      printint(chrcode - countbase);
+    }  /*:239*/
+    break;
+
+  /*249:*/
+  case assigndimen:   /*:249*/
+    if (chrcode < scaledbase)
+      printlengthparam(chrcode - dimenbase);
+    else {
+      printesc(S("dimen"));
+      printint(chrcode - scaledbase);
+    }
+    break;
+    /*266:*/
+
+  case accent:
+    printesc(S("accent"));
+    break;
+
+  case advance:
+    printesc(S("advance"));
+    break;
+
+  case afterassignment:
+    printesc(S("afterassignment"));
+    break;
+
+  case aftergroup:
+    printesc(S("aftergroup"));
+    break;
+
+  case assignfontdimen:
+    printesc(S("fontdimen"));
+    break;
+
+  case begingroup:
+    printesc(S("begingroup"));
+    break;
+
+  case breakpenalty:
+    printesc(S("penalty"));
+    break;
+
+  case charnum:
+    printesc(S("char"));
+    break;
+
+  case csname:
+    printesc(S("csname"));
+    break;
+
+  case deffont:
+    printesc(S("font"));
+    break;
+
+  case delimnum:
+    printesc(S("delimiter"));
+    break;
+
+  case divide:
+    printesc(S("divide"));
+    break;
+
+  case endcsname:
+    printesc(S("endcsname"));
+    break;
+
+  case endgroup:
+    printesc(S("endgroup"));
+    break;
+
+  case exspace:
+    printesc(' ');
+    break;
+
+  case expandafter:
+    printesc(S("expandafter"));
+    break;
+
+  case halign:
+    printesc(S("halign"));
+    break;
+
+  case hrule:
+    printesc(S("hrule"));
+    break;
+
+  case ignorespaces:
+    printesc(S("ignorespaces"));
+    break;
+
+  case insert_:
+    printesc(S("insert"));
+    break;
+
+  case italcorr:
+    printesc('/');
+    break;
+
+  case mark_:
+    printesc(S("mark"));
+    break;
+
+  case mathaccent:
+    printesc(S("mathaccent"));
+    break;
+
+  case mathcharnum:
+    printesc(S("mathchar"));
+    break;
+
+  case mathchoice:
+    printesc(S("mathchoice"));
+    break;
+
+  case multiply:
+    printesc(S("multiply"));
+    break;
+
+  case noalign:
+    printesc(S("noalign"));
+    break;
+
+  case noboundary:
+    printesc(S("noboundary"));
+    break;
+
+  case noexpand:
+    printesc(S("noexpand"));
+    break;
+
+  case nonscript:
+    printesc(S("nonscript"));
+    break;
+
+  case omit:
+    printesc(S("omit"));
+    break;
+
+  case radical:
+    printesc(S("radical"));
+    break;
+
+  case readtocs:
+    printesc(S("read"));
+    break;
+
+  case relax:
+    printesc(S("relax"));
+    break;
+
+  case setbox:
+    printesc(S("setbox"));
+    break;
+
+  case setprevgraf:
+    printesc(S("prevgraf"));
+    break;
+
+  case setshape:
+    printesc(S("parshape"));
+    break;
+
+  case the:
+    printesc(S("the"));
+    break;
+
+  case toksregister:
+    printesc(S("toks"));
+    break;
+
+  case vadjust:
+    printesc(S("vadjust"));
+    break;
+
+  case valign:
+    printesc(S("valign"));
+    break;
+
+  case vcenter:
+    printesc(S("vcenter"));
+    break;
+
+  case vrule:
+    printesc(S("vrule"));
+    break;
+
+  /*:266*/
+  /*335:*/
+  case parend:
+    printesc(S("par"));
+    break;
+
+  /*:335*/
+  /*377:*/
+  case input:   /*:377*/
+    if (chrcode == 0)
+      printesc(S("input"));
+    else
+      printesc(S("endinput"));
+    break;
+    /*385:*/
+
+  case topbotmark:   /*:385*/
+    switch (chrcode) {
+
+    case firstmarkcode:
+      printesc(S("firstmark"));
+      break;
+
+    case botmarkcode:
+      printesc(S("botmark"));
+      break;
+
+    case splitfirstmarkcode:
+      printesc(S("splitfirstmark"));
+      break;
+
+    case splitbotmarkcode:
+      printesc(S("splitbotmark"));
+      break;
+
+    default:
+      printesc(S("topmark"));
+      break;
+    }
+    break;
+    /*412:*/
+
+  case register_:   /*:412*/
+    if (chrcode == intval)
+      printesc(S("count"));
+    else if (chrcode == dimenval)
+      printesc(S("dimen"));
+    else if (chrcode == glueval)
+      printesc(S("skip"));
+    else
+      printesc(S("muskip"));
+    break;
+
+  /*417:*/
+  case setaux:
+    if (chrcode == vmode)
+      printesc(S("prevdepth"));
+    else
+      printesc(S("spacefactor"));
+    break;
+
+  case setpageint:
+    if (chrcode == 0)
+      printesc(S("deadcycles"));
+    else
+      printesc(S("insertpenalties"));
+    break;
+
+  case setboxdimen:
+    if (chrcode == widthoffset)
+      printesc(S("wd"));
+    else {
+      if (chrcode == heightoffset)
+	printesc(S("ht"));
+      else
+	printesc(S("dp"));
+    }
+    break;
+
+  case lastitem:   /*:417*/
+    switch (chrcode) {
+
+    case intval:
+      printesc(S("lastpenalty"));
+      break;
+
+    case dimenval:
+      printesc(S("lastkern"));
+      break;
+
+    case glueval:
+      printesc(S("lastskip"));
+      break;
+
+    case inputlinenocode:
+      printesc(S("inputlineno"));
+      break;
+
+    default:
+      printesc(S("badness"));
+      break;
+    }
+    break;
+    /*469:*/
+
+  case convert:   /*:469*/
+    switch (chrcode) {
+
+    case numbercode:
+      printesc(S("number"));
+      break;
+
+    case romannumeralcode:
+      printesc(S("romannumeral"));
+      break;
+
+    case stringcode:
+      printesc(S("string"));
+      break;
+
+    case meaningcode:
+      printesc(S("meaning"));
+      break;
+
+    case fontnamecode:
+      printesc(S("fontname"));
+      break;
+
+    default:
+      printesc(S("jobname"));
+      break;
+    }
+    break;
+    /*488:*/
+
+  case iftest:   /*:488*/
+    switch (chrcode) {
+
+    case ifcatcode:
+      printesc(S("ifcat"));
+      break;
+
+    case ifintcode:
+      printesc(S("ifnum"));
+      break;
+
+    case ifdimcode:
+      printesc(S("ifdim"));
+      break;
+
+    case ifoddcode:
+      printesc(S("ifodd"));
+      break;
+
+    case ifvmodecode:
+      printesc(S("ifvmode"));
+      break;
+
+    case ifhmodecode:
+      printesc(S("ifhmode"));
+      break;
+
+    case ifmmodecode:
+      printesc(S("ifmmode"));
+      break;
+
+    case ifinnercode:
+      printesc(S("ifinner"));
+      break;
+
+    case ifvoidcode:
+      printesc(S("ifvoid"));
+      break;
+
+    case ifhboxcode:
+      printesc(S("ifhbox"));
+      break;
+
+    case ifvboxcode:
+      printesc(S("ifvbox"));
+      break;
+
+    case ifxcode:
+      printesc(S("ifx"));
+      break;
+
+    case ifeofcode:
+      printesc(S("ifeof"));
+      break;
+
+    case iftruecode:
+      printesc(S("iftrue"));
+      break;
+
+    case iffalsecode:
+      printesc(S("iffalse"));
+      break;
+
+    case ifcasecode:
+      printesc(S("ifcase"));
+      break;
+
+    default:
+      printesc(S("if"));
+      break;
+    }
+    break;
+    /*492:*/
+
+  case fiorelse:   /*:492*/
+    if (chrcode == ficode)
+      printesc(S("fi"));
+    else if (chrcode == orcode)
+      printesc(S("or"));
+    else
+      printesc(S("else"));
+    break;
+    /*781:*/
+
+  case tabmark:
+    if (chrcode == spancode)
+      printesc(S("span"));
+    else {
+      chrcmd(S("alignment tab character "));
+    }
+    break;
+
+  case carret:   /*:781*/
+    if (chrcode == crcode)
+      printesc(S("cr"));
+    else
+      printesc(S("crcr"));
+    break;
+    /*984:*/
+
+  case setpagedimen:   /*:984*/
+    switch (chrcode) {
+
+    case 0:
+      printesc(S("pagegoal"));
+      break;
+
+    case 1:
+      printesc(S("pagetotal"));
+      break;
+
+    case 2:
+      printesc(S("pagestretch"));
+      break;
+
+    case 3:
+      printesc(S("pagefilstretch"));
+      break;
+
+    case 4:
+      printesc(S("pagefillstretch"));
+      break;
+
+    case 5:
+      printesc(S("pagefilllstretch"));
+      break;
+
+    case 6:
+      printesc(S("pageshrink"));
+      break;
+
+    default:
+      printesc(S("pagedepth"));
+      break;
+    }
+    break;
+    /*1053:*/
+
+  case stop:   /*:1053*/
+    if (chrcode == 1)
+      printesc(S("dump"));
+    else
+      printesc(S("end"));
+    break;
+    /*1059:*/
+
+  case hskip:
+    switch (chrcode) {
+
+    case skipcode:
+      printesc(S("hskip"));
+      break;
+
+    case filcode:
+      printesc(S("hfil"));
+      break;
+
+    case fillcode:
+      printesc(S("hfill"));
+      break;
+
+    case sscode:
+      printesc(S("hss"));
+      break;
+
+    default:
+      printesc(S("hfilneg"));
+      break;
+    }
+    break;
+
+  case vskip:
+    switch (chrcode) {
+
+    case skipcode:
+      printesc(S("vskip"));
+      break;
+
+    case filcode:
+      printesc(S("vfil"));
+      break;
+
+    case fillcode:
+      printesc(S("vfill"));
+      break;
+
+    case sscode:
+      printesc(S("vss"));
+      break;
+
+    default:
+      printesc(S("vfilneg"));
+      break;
+    }
+    break;
+
+  case mskip:
+    printesc(S("mskip"));
+    break;
+
+  case kern:
+    printesc(S("kern"));
+    break;
+
+  case mkern:   /*:1059*/
+    printesc(S("mkern"));
+    break;
+    /*1072:*/
+
+  case hmove:
+    if (chrcode == 1)
+      printesc(S("moveleft"));
+    else
+      printesc(S("moveright"));
+    break;
+
+  case vmove:
+    if (chrcode == 1)
+      printesc(S("raise"));
+    else
+      printesc(S("lower"));
+    break;
+
+  case makebox:
+    switch (chrcode) {
+
+    case boxcode:
+      printesc(S("box"));
+      break;
+
+    case copycode:
+      printesc(S("copy"));
+      break;
+
+    case lastboxcode:
+      printesc(S("lastbox"));
+      break;
+
+    case vsplitcode:
+      printesc(S("vsplit"));
+      break;
+
+    case vtopcode:
+      printesc(S("vtop"));
+      break;
+
+    case vtopcode + vmode:
+      printesc(S("vbox"));
+      break;
+
+    default:
+      printesc(S("hbox"));
+      break;
+    }
+    break;
+
+  case leadership:   /*:1072*/
+    if (chrcode == aleaders)
+      printesc(S("leaders"));
+    else if (chrcode == cleaders)
+      printesc(S("cleaders"));
+    else if (chrcode == xleaders)
+      printesc(S("xleaders"));
+    else
+      printesc(S("shipout"));
+    break;
+    /*1089:*/
+
+  case startpar:   /*:1089*/
+    if (chrcode == 0)
+      printesc(S("noindent"));
+    else
+      printesc(S("indent"));
+    break;
+    /*1108:*/
+
+  case removeitem:
+    if (chrcode == gluenode)
+      printesc(S("unskip"));
+    else if (chrcode == kernnode)
+      printesc(S("unkern"));
+    else
+      printesc(S("unpenalty"));
+    break;
+
+  case unhbox:
+    if (chrcode == copycode)
+      printesc(S("unhcopy"));
+    else
+      printesc(S("unhbox"));
+    break;
+
+  case unvbox:   /*:1108*/
+    if (chrcode == copycode)
+      printesc(S("unvcopy"));
+    else
+      printesc(S("unvbox"));
+    break;
+    /*1115:*/
+
+  case discretionary:   /*:1115*/
+    if (chrcode == 1)
+      printesc('-');
+    else
+      printesc(S("discretionary"));
+    break;
+    /*1143:*/
+
+  case eqno:   /*:1143*/
+    if (chrcode == 1)
+      printesc(S("leqno"));
+    else
+      printesc(S("eqno"));
+    break;
+    /*1157:*/
+
+  case mathcomp:
+    switch (chrcode) {
+
+    case ordnoad:
+      printesc(S("mathord"));
+      break;
+
+    case opnoad:
+      printesc(S("mathop"));
+      break;
+
+    case binnoad:
+      printesc(S("mathbin"));
+      break;
+
+    case relnoad:
+      printesc(S("mathrel"));
+      break;
+
+    case opennoad:
+      printesc(S("mathopen"));
+      break;
+
+    case closenoad:
+      printesc(S("mathclose"));
+      break;
+
+    case punctnoad:
+      printesc(S("mathpunct"));
+      break;
+
+    case innernoad:
+      printesc(S("mathinner"));
+      break;
+
+    case undernoad:
+      printesc(S("underline"));
+      break;
+
+    default:
+      printesc(S("overline"));
+      break;
+    }
+    break;
+
+  case limitswitch:   /*:1157*/
+    if (chrcode == limits)
+      printesc(S("limits"));
+    else if (chrcode == nolimits)
+      printesc(S("nolimits"));
+    else
+      printesc(S("displaylimits"));
+    break;
+    /*1170:*/
+
+  case mathstyle:   /*:1170*/
+    printstyle(chrcode);
+    break;
+
+  /*1179:*/
+  case above:   /*:1179*/
+    switch (chrcode) {
+
+    case overcode:
+      printesc(S("over"));
+      break;
+
+    case atopcode:
+      printesc(S("atop"));
+      break;
+
+    case delimitedcode:
+      printesc(S("abovewithdelims"));
+      break;
+
+    case delimitedcode + overcode:
+      printesc(S("overwithdelims"));
+      break;
+
+    case delimitedcode + atopcode:
+      printesc(S("atopwithdelims"));
+      break;
+
+    default:
+      printesc(S("above"));
+      break;
+    }
+    break;
+    /*1189:*/
+
+  case leftright:   /*:1189*/
+    if (chrcode == leftnoad)
+      printesc(S("left"));
+    else
+      printesc(S("right"));
+    break;
+    /*1209:*/
+
+  case prefix:
+    if (chrcode == 1)
+      printesc(S("long"));
+    else if (chrcode == 2)
+      printesc(S("outer"));
+    else
+      printesc(S("global"));
+    break;
+
+  case def:   /*:1209*/
+    if (chrcode == 0)
+      printesc(S("def"));
+    else if (chrcode == 1)
+      printesc(S("gdef"));
+    else if (chrcode == 2)
+      printesc(S("edef"));
+    else
+      printesc(S("xdef"));
+    break;
+    /*1220:*/
+
+  case let:   /*:1220*/
+    if (chrcode != normal)
+      printesc(S("futurelet"));
+    else
+      printesc(S("let"));
+    break;
+    /*1223:*/
+
+  case shorthanddef:
+    switch (chrcode) {
+
+    case chardefcode:
+      printesc(S("chardef"));
+      break;
+
+    case mathchardefcode:
+      printesc(S("mathchardef"));
+      break;
+
+    case countdefcode:
+      printesc(S("countdef"));
+      break;
+
+    case dimendefcode:
+      printesc(S("dimendef"));
+      break;
+
+    case skipdefcode:
+      printesc(S("skipdef"));
+      break;
+
+    case muskipdefcode:
+      printesc(S("muskipdef"));
+      break;
+
+    default:
+      printesc(S("toksdef"));
+      break;
+    }
+    break;
+
+  case chargiven:
+    printesc(S("char"));
+    printhex(chrcode);
+    break;
+
+  case mathgiven:
+    printesc(S("mathchar"));
+    printhex(chrcode);
+    break;
+
+  /*:1223*/
+  /*1231:*/
+  case defcode:
+    if (chrcode == catcodebase)
+      printesc(S("catcode"));
+    else if (chrcode == mathcodebase)
+      printesc(S("mathcode"));
+    else if (chrcode == lccodebase)
+      printesc(S("lccode"));
+    else if (chrcode == uccodebase)
+      printesc(S("uccode"));
+    else if (chrcode == sfcodebase)
+      printesc(S("sfcode"));
+    else
+      printesc(S("delcode"));
+    break;
+
+  case deffamily:   /*:1231*/
+    printsize(chrcode - mathfontbase);
+    break;
+    /*1251:*/
+
+  case hyphdata:   /*:1251*/
+    if (chrcode == 1)
+      printesc(S("patterns"));
+    else
+      printesc(S("hyphenation"));
+    break;
+    /*1255:*/
+
+  case assignfontint:   /*:1255*/
+    if (chrcode == 0)
+      printesc(S("hyphenchar"));
+    else
+      printesc(S("skewchar"));
+    break;
+    /*1261:*/
+
+  case setfont:
+    print(S("select font "));
+    slowprint(get_fontname(chrcode));
+    if (get_fontsize(chrcode) != get_fontdsize(chrcode)) {
+      print(S(" at "));
+      printscaled(get_fontsize(chrcode));
+      print(S("pt"));
+    }
+    break;
+
+  /*:1261*/
+  /*1263:*/
+  case setinteraction:   /*:1263*/
+    switch (chrcode) {
+
+    case batchmode:
+      printesc(S("batchmode"));
+      break;
+
+    case nonstopmode:
+      printesc(S("nonstopmode"));
+      break;
+
+    case scrollmode:
+      printesc(S("scrollmode"));
+      break;
+
+    default:
+      printesc(S("errorstopmode"));
+      break;
+    }
+    break;
+    /*1273:*/
+
+  case instream:   /*:1273*/
+    if (chrcode == 0)
+      printesc(S("closein"));
+    else
+      printesc(S("openin"));
+    break;
+    /*1278:*/
+
+  case message:   /*:1278*/
+    if (chrcode == 0)
+      printesc(S("message"));
+    else
+      printesc(S("errmessage"));
+    break;
+    /*1287:*/
+
+  case caseshift:   /*:1287*/
+    if (chrcode == lccodebase)
+      printesc(S("lowercase"));
+    else
+      printesc(S("uppercase"));
+    break;
+    /*1292:*/
+
+  case xray:   /*:1292*/
+    switch (chrcode) {
+
+    case showboxcode:
+      printesc(S("showbox"));
+      break;
+
+    case showthecode:
+      printesc(S("showthe"));
+      break;
+
+    case showlists:
+      printesc(S("showlists"));
+      break;
+
+    default:
+      printesc(S("show"));
+      break;
+    }
+    break;
+    /*1295:*/
+
+  case undefinedcs:
+    print(S("undefined"));
+    break;
+
+  case call:
+    print(S("macro"));
+    break;
+
+  case longcall:
+    printesc(S("long macro"));
+    break;
+
+  case outercall:
+    printesc(S("outer macro"));
+    break;
+
+  case longoutercall:
+    printesc(S("long"));
+    printesc(S("outer macro"));
+    break;
+
+  case endtemplate:   /*:1295*/
+    printesc(S("outer endtemplate"));
+    break;
+    /*1346:*/
+
+  case extension:
+    switch (chrcode) {
+
+    case opennode:
+      printesc(S("openout"));
+      break;
+
+    case writenode:
+      printesc(S("write"));
+      break;
+
+    case closenode:
+      printesc(S("closeout"));
+      break;
+
+    case specialnode:
+      printesc(S("special"));
+      break;
+
+    case immediatecode:
+      printesc(S("immediate"));
+      break;
+
+    case setlanguagecode:
+      printesc(S("setlanguage"));
+      break;
+
+    default:
+      print(S("[unknown extension!]"));
+      break;
+    }/*:1346*/
+    break;
+
+  default:
+    print(S("[unknown command code!]"));
+    break;
+  }
+}
+
