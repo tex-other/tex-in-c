@@ -1,0 +1,42 @@
+The main purpose is to preseve as much information as possible. 
+
+TeX is written using "literate programming" WEB system. WEB is 
+intended to keep sources and documentation together. Additionaly 
+WEB provides substantial macro capabilities. To get executables 
+or printed documentation requiers a few processing stages. Using
+`web2c' setup they look as follows:
+WEB --> Pascal --> C --> executable
+WEB --> TeX --> dvi --> printout
+The WEB to Pascal conversion is done using `tangle' program, while 
+Pascal to C conversion uses convertor specially writen for `web2c' 
+system. At first glance this gives us C equivalent to WEB sources. 
+However, even short look at converted code make clear that what 
+we get is not the source code. Namely, there is no comment, all 
+strings are gone, labels have no menmonic value. Comparing with 
+WEB source we see that macros got expanded, decreasing readability
+and hampering maintainence. Our goal was to have editable source. 
+We were not able to get comments trough conversion -- WEB source 
+consists of interleaved code and description blocks. `tangle' 
+rearranges code blocks quite extensively and we felt that it was 
+not practical to move descriptions together with code (description
+would loose continuity anyway, and huge tekst block would interrupt
+program flow). What we do have is comments containing cross-references
+to WEB source. We prevented most macros from expansion, we 
+preserved strings and retained symbolic labels.
+
+Convertion stages:
+ - remowe definitions from tex.web
+ - protect strings so that tangle will not eat them
+ - use tangle with new change file, designed to 
+	make Pascal file syntatically correct
+ - correct Pascal file (strings, re-add protected parens)
+ - convert with p2c
+ - correct (remove dummy variables and functions)
+
+Some issues:
+ - Pascal file must be syntically correct
+ - many WEB macros are l-values, so we expand those macros to 
+   dummy variables (if no parameters) or to form 'f(x)^' with 
+   dummy pointer valued function. 
+ - WEB macros have only one (block of) parameter(s). Multiparameter 
+   macros are simulated using additional macros and recursion
