@@ -1,0 +1,26 @@
+mem[] jest uzyte bezposrednio w:
+initialize
+newspec
+copynodelist
+scansomethinginternal
+hlistout
+hpack
+newnoad
+cleanbox
+makemathaccent
+makeord
+pushalignment
+popalignment
+trybreak
+postlinebreak
+linebreak
+initmath
+mathradical
+mathac
+mathfraction
+alterboxdimen
+prefixedcommand
+storefmtfile
+handlerightbrace
+loadfmtfile
+debughelp
