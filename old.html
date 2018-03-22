@@ -1,0 +1,40 @@
+<html> <head>TeX in C older version </head>
+<body>
+Previous tarballs <a href="texinc-0.1.tar.gz"> texinc-0.1.tar.gz </a></p>
+and <a href="texinc-0.0.tar.gz"> texinc-0.0.tar.gz </a></p>
+
+
+Even older version: 
+there is one big C file with translated code 
+and two small auxilary files.</p>
+
+Sources (<em> do not click, download them</em>):
+<ul> 
+<li> <a href="tex.c">tex.c(510 kB)</a> - the main C file 
+<li> <a href="funcs.c">funcs.c</a>, <a href="inipool.c">inipool.c</a>,
+ <a href="pool_str.c">pool_str.c</a> - auxillary files
+<li> <a href="p2c/p2c.h">p2c/p2c.h</a> - header file with translated macros
+<li> <a href="Makefile">Makefile</a>
+</ul>
+The compilation works using 'gcc' on Linux. The sources 
+are pretty generic ANSI C, however some functions are about 1000 lines 
+long (and tex.c is big) so they my extend compiler limits. 
+The executable ('ttex') is an INITEX -- you may just input 'plain' in your 
+file or first generate a format and then use it.</p>
+Usage:
+<ul>
+<li>ttex file.tex
+<li>ttex '&format' file.tex
+</ul>
+In the first case 'file.tex' must input the format file (source).
+File handling is primitive: set TEXINPUTS, TEXFONTS and TEXFORMATS to 
+to specify path (list of directories) where the executable 
+looks for input files, tfm-s and formats respectively.</p>
+
+BUG: If file has no '\end' the program  will loop endlessly.</p>
+
+
+My <a href="tex_tt"> current working directory </a> (sources are duplicated there).
+</body>
+</html>
+
