@@ -1,0 +1,102 @@
+TeX is an excellent typesetting system. Yet its popularity outside 
+scientific community is low. And even in science folks sometimes 
+feel that TeX is somewhat dated. It is clear that regardless 
+its evolution TeX will survive for many years --- TeX is doing 
+its job and will be used just because of inertia, if not for 
+other reason. However, to be really successful TeX must evolve. 
+What is needed:
+  - better multilingual support
+  - more user friendly interface
+  - better cooperation with other text processing systems
+
+So we should be able to couple TeX with various front ends and 
+produce many forms of output. To make cooperation with other 
+systems meaningful TeX internal structure must change --- if 
+necessary TeX must expose some of quantities which currently 
+are internal (interactive system must know correspondence between 
+input characters and the output ones, and possibly also bounding 
+boxes). For many purposes incremental mode is needed. 
+
+Another goal is seamless conversion to other formats like HTML or 
+SGML. There are quite good programs doing such conversions, and 
+most difficulties seem to be inherent, yet using (part of) TeX 
+in conversion should insure that the input is not misinterpreted.  
+ 
+Potentially, TeX may be a typesetting engine for many different 
+products --- having different input form. 
+
+
+To make the point clearer: traditionally TeX offered great reliability 
+and compatibility. To make new system compatible with TeX is hard, and
+commercial vendors do not care very much about compatibility with TeX. 
+So growing popularity of other systems essentially means loosing 
+compatibility. On the other hand some TeX features are very attractive, 
+so TeX derived system may have wide use. And as long as such a system 
+contains original code it may be fully compatible with TeX (or at least
+offer a compatibility mode) at little cost. 
+
+The question of determining how much compatibility is needed, and 
+assuring that compatibility is a big task, but the alternative 
+is just stagnation.
+
+There are some movements to change TeX 
+ - e-TeX 
+ - omega
+ - pdftex
+ - NTS project
+However NTS is moving quite slow, and the other project still 
+stay with WEB and its limitations (see below). Moreover, while 
+omega has pretty interesting capabilities, it produces different 
+vertical displacements then TeX on the same file --- so it is 
+not fully compatible with TeX.
+
+So, what is needed to enable healthy evolution:
+
+1) Get rid of WEB: 
+   One may ask what is wrong with WEB. Well, TeX input is not
+   very readable, so sources are hard to read online. Tangle 
+   rearranges input text, which makes some errors hard to spot. 
+   Big problem is that input file is monolithic -- this makes 
+   maintenance much more difficult. WEB is closely connected to 
+   Pascal, however, standard Pascal has quite limited file and 
+   string handling capabilities. The type system is too strong, 
+   so in TeX main data structure is 'memory_word' -- a variant 
+   record which effectively defeats any type checking. 
+     For many years the main way to compile TeX was first 
+   convert sources to C, and then use C compiler. Such a process
+   is complicated and potentially error-prone and additionally 
+   complicates maintenance, as one need to relate the C sources to 
+   WEB. 
+
+ 2) Better modularity: 
+   Split TeX into parts. Factor out common parts of various 
+   programs --- many programs in TeX suite share large part of 
+   identical or very similar code, yet this code just gets duplicated, 
+   which means that all programs must be updated in sync.
+   Make interfaces between various stages in TeX explicit.
+   TeX seem to have reasonably good internal structure, but since 
+   it is a monolithic program keeping most of the data in global 
+   variables it is hard to be sure that some parts are independent. 
+   And sometimes variables which are normally only accessed trough 
+   special macros are accessed directly. Moreover, many procedures 
+   use global variables to pass parameters. 
+
+ 3) Create a comprehensive test suite:
+   Traditional 'trip' test is quite closely related to the implementation, 
+   and depends very much on the exact form of error recovery. Moreover, 
+   'trip' is a small test, so its diagnostic abilities are limited 
+   (during my current work most mistakes were caught by compiler or 
+    translation tools, however one of remaining mistakes passed through 
+    trip test, and only surfaced on larger files). 
+
+-------------------------------------------------------------
+
+The first step is conversion to C. Currently, C is available for 
+quite wide range of machines --- I my opinion providing the best 
+portability (better than Java or C++). C is good enough to allow 
+writing a well structured program. 
+Since converters from Pascal to C are available, the bulk of work 
+can be done mechanically. The main work is conversion of macros 
+from WEB to C and preserving the strings (tangle replaces strings 
+in source by numbers). 
+
